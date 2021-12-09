@@ -5,8 +5,14 @@
 
 [node name="World" type="Node2D"]
 
+[node name="Tank" parent="." instance=ExtResource( 2 )]
+position = Vector2( 891, 468 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
+
 [node name="Tank1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 89, 491 )
+position = Vector2( 86, 494 )
+scale = Vector2( 1, -1 )
 mode = 0
 mass = 65535.0
 
