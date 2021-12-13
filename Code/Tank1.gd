@@ -4,6 +4,7 @@ extends RigidBody2D
 const WALK_ACCEL = 500.0
 const WALK_MAX_VELOCITY = 140.0
 
+	
 func _integrate_forces(state):
 	var velocity = state.get_linear_velocity()
 	var step = state.get_step()
