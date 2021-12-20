@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stick_metal_outline.png-5580e5e7aeb8c2685bf1b1239353def2.stex"
+path="res://.import/conduit-removebg-preview.png-df8d07a887a1fccf67a59cd071511b17.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stick_metal_outline.png"
-dest_files=[ "res://.import/stick_metal_outline.png-5580e5e7aeb8c2685bf1b1239353def2.stex" ]
+source_file="res://conduit-removebg-preview.png"
+dest_files=[ "res://.import/conduit-removebg-preview.png-df8d07a887a1fccf67a59cd071511b17.stex" ]
 
 [params]
 

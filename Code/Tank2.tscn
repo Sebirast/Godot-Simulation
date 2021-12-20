@@ -8,13 +8,11 @@ script/source = "extends RigidBody2D
 const WALK_ACCEL = 500.0
 const WALK_MAX_VELOCITY = 140.0
 
-var collisionShapes = [$CollisionPolygon2D, $CollisionShape2D, $CollisionShape2D2, $CollisionShape2D3, $CollisionShape2D4, $CollisionShape2D5]
+var collisionShapes = [$CollisionPolygon2D, $CollisionShape2D, $CollisionShape2D2, $CollisionShape2D3, $CollisionShape2D4]
 
 func _ready():
 	for colShape in collisionShapes:
 		colShape.position.x *= -1
-	
-	get_node(\"Tank1\").set_flip_h(true)
 	
 func _keyBoardInput(event, key):
 	if event is InputEventKey and event.pressed:
@@ -49,11 +47,26 @@ func _integrate_forces(state):
 "
 
 [sub_resource type="RayShape2D" id=2]
-length = 19.0
+length = 155.0
 
 [node name="Tank2" instance=ExtResource( 1 )]
 script = SubResource( 1 )
 
+[node name="11451973-removebg-preview" parent="." index="0"]
+scale = Vector2( -0.2, 0.2 )
+
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 21, 0 )
+position = Vector2( -2, 0 )
 shape = SubResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+scale = Vector2( -0.2, 0.2 )
+
+[node name="CollisionShape2D2" parent="." index="3"]
+position = Vector2( -42, 0 )
+
+[node name="CollisionShape2D3" parent="." index="4"]
+position = Vector2( -21, 0 )
+
+[node name="CollisionShape2D4" parent="." index="5"]
+position = Vector2( 20, 0 )
