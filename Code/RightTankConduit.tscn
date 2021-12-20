@@ -3,7 +3,7 @@
 [ext_resource path="res://conduit-removebg-preview.png" type="Texture" id=1]
 [ext_resource path="res://conduit.gd" type="Script" id=2]
 
-[node name="LeftTankConduit" type="Node2D"]
+[node name="RightTankConduit" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
