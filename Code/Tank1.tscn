@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://11451973-removebg-preview.png" type="Texture" id=1]
+[ext_resource path="res://tank.png" type="Texture" id=1]
 [ext_resource path="res://Tank1.gd" type="Script" id=2]
 
 [sub_resource type="RayShape2D" id=1]
@@ -15,8 +15,7 @@ contacts_reported = 3
 angular_damp = 18.791
 script = ExtResource( 2 )
 
-[node name="11451973-removebg-preview" type="Sprite" parent="."]
-position = Vector2( 0, 1 )
+[node name="Tank" type="Sprite" parent="."]
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
 

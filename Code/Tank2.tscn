@@ -52,7 +52,7 @@ length = 155.0
 [node name="Tank2" instance=ExtResource( 1 )]
 script = SubResource( 1 )
 
-[node name="11451973-removebg-preview" parent="." index="0"]
+[node name="Tank" parent="." index="0"]
 scale = Vector2( -0.2, 0.2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
