@@ -10,7 +10,7 @@ length = 153.0
 [sub_resource type="RayShape2D" id=3]
 length = 155.0
 
-[node name="TankLeft" type="RigidBody2D"]
+[node name="RightTank" type="RigidBody2D"]
 mode = 2
 contacts_reported = 3
 angular_damp = 18.791

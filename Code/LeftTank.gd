@@ -26,7 +26,12 @@ func _integrate_forces(state):
 			var xspeed = max( abs(velocity.x) - WALK_ACCEL * step, 0)
 			velocity.x = xspeed * sign(velocity.x)
 
+
 	
 
 	velocity += state.get_total_gravity() * step
 	state.set_linear_velocity(velocity)
+
+func _physics_process(delta):
+	if Input.is_action_pressed("LeftConduitDown"):
+		print($conduit.get_rotation_degrees())
