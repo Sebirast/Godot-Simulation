@@ -20,6 +20,7 @@ polygon = PoolVector2Array( -16.5, -1, -6.5, 3, -6.5, 4.2, 25.5, 26.5, 27.5, 26.
 
 [node name="LeftTank" parent="." instance=ExtResource( 2 )]
 position = Vector2( 97, 481 )
+mode = 0
 
 [node name="RightTank" parent="." instance=ExtResource( 3 )]
 position = Vector2( 874, 439 )
