@@ -33,5 +33,8 @@ func _integrate_forces(state):
 	state.set_linear_velocity(velocity)
 
 func _physics_process(delta):
-	if Input.is_action_pressed("LeftConduitDown"):
-		print($conduit.get_rotation_degrees())
+	var currentAngle = $conduit.get_rotation_degrees()
+	if Input.is_action_pressed("LeftConduitDown") and not Input.is_action_pressed("LeftConduitUp"):
+		$conduit.set_rotation_degrees(currentAngle + 1)
+	elif Input.is_action_pressed("LeftConduitUp") and not Input.is_action_pressed("LeftConduitDown"):
+		$conduit.set_rotation_degrees(currentAngle - 1)
