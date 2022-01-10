@@ -4,7 +4,9 @@ const WALK_ACCEL = 500.0
 const WALK_MAX_VELOCITY = 140.0
 
 var collisionShapes = [$CollisionPolygon2D, $CollisionShape2D, $CollisionShape2D2, $CollisionShape2D3, $CollisionShape2D4]
-	
+
+var bullet = preload("res://Bullets/bulletBeige.tscn")
+var counter = 0
 		
 func _integrate_forces(state):
 	var velocity = state.get_linear_velocity()
@@ -19,22 +21,14 @@ func _integrate_forces(state):
 	if on_floor:
 		if  Input.is_action_pressed("tank2forward") and not Input.is_action_pressed("tank2backward"):
 			velocity.x = max( velocity.x - WALK_ACCEL * step, -WALK_MAX_VELOCITY )
-			print("tank 2")
 		elif Input.is_action_pressed("tank2backward") and not Input.is_action_pressed("tank2forward"):
 			velocity.x = min( velocity.x + WALK_ACCEL * step, WALK_MAX_VELOCITY )
 		else:
 			var xspeed = max( abs(velocity.x) - WALK_ACCEL * step, 0)
 			velocity.x = xspeed * sign(velocity.x)
 
-
-	
-
 	velocity += state.get_total_gravity() * step
 	state.set_linear_velocity(velocity)
 
-func _physics_process(delta):
-	var currentAngle = $conduit.get_rotation_degrees()
-	if Input.is_action_pressed("LeftConduitDown") and not Input.is_action_pressed("LeftConduitUp"):
-		$conduit.set_rotation_degrees(currentAngle + 1)
-	elif Input.is_action_pressed("LeftConduitUp") and not Input.is_action_pressed("LeftConduitDown"):
-		$conduit.set_rotation_degrees(currentAngle - 1)
+
+

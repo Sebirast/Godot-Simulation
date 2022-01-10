@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tank.png" type="Texture" id=1]
 [ext_resource path="res://Tanks/LeftTank/LeftTank.gd" type="Script" id=2]
 [ext_resource path="res://conduit-removebg-preview.png" type="Texture" id=3]
+[ext_resource path="res://Tanks/LeftTank/LeftConduit.gd" type="Script" id=4]
 
 [sub_resource type="RayShape2D" id=2]
 length = 155.0
@@ -22,6 +23,7 @@ rotation = -2.71748
 scale = Vector2( 0.2, -0.2 )
 texture = ExtResource( 3 )
 offset = Vector2( -98, -51 )
+script = ExtResource( 4 )
 
 [node name="Tank" type="Sprite" parent="."]
 scale = Vector2( -0.2, 0.2 )
