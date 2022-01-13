@@ -4,7 +4,8 @@ extends Node2D
 const WALK_ACCEL = 500.0
 const WALK_MAX_VELOCITY = 140.0
 
-	
+var bullet = preload("res://Bullets/bulletBeige.tscn")
+
 func _integrate_forces(state):
 	var velocity = state.get_linear_velocity()
 	var step = state.get_step()
@@ -24,9 +25,24 @@ func _integrate_forces(state):
 			var xspeed = max( abs(velocity.x) - WALK_ACCEL * step, 0)
 			velocity.x = xspeed * sign(velocity.x)
 
-			
+	
 	
 	velocity += state.get_total_gravity() * step
 	state.set_linear_velocity(velocity)
+
+func _physics_process(delta):
+	var currentAngle = $conduit.get_rotation_degrees()
+	if Input.is_action_pressed("ui_down") and not Input.is_action_pressed("ui_up"):
+		$conduit.set_rotation_degrees(currentAngle - 1)
+	elif Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"):
+		$conduit.set_rotation_degrees(currentAngle + 1)
+	
+	if Input.is_action_just_pressed("RightShoot"):
+		var bullet_instance = bullet.instance()
+		bullet_instance.z_index = -1
+		bullet_instance.position = position
+		bullet_instance.set_linear_velocity(400*Vector2(cos(deg2rad(180+currentAngle+24.3)), sin(deg2rad(180+currentAngle+24.3))))
+		get_parent().add_child(bullet_instance)
+
 	
 

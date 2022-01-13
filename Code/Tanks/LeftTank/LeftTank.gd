@@ -31,4 +31,16 @@ func _integrate_forces(state):
 	state.set_linear_velocity(velocity)
 
 
-
+func _physics_process(delta):
+	var currentAngle = $conduit.get_rotation_degrees()
+	if Input.is_action_pressed("LeftConduitDown") and not Input.is_action_pressed("LeftConduitUp"):
+		$conduit.set_rotation_degrees(currentAngle + 1)
+	elif Input.is_action_pressed("LeftConduitUp") and not Input.is_action_pressed("LeftConduitDown"):
+		$conduit.set_rotation_degrees(currentAngle - 1)
+	
+	if Input.is_action_just_pressed("LeftShoot"):
+		var bullet_instance = bullet.instance()
+		bullet_instance.z_index = -1
+		bullet_instance.position = position
+		bullet_instance.set_linear_velocity(400*Vector2(cos(deg2rad(currentAngle+155.7)), sin(deg2rad(currentAngle+155.7))))
+		get_parent().add_child(bullet_instance)
