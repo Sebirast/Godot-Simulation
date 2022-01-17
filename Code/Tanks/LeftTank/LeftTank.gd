@@ -7,6 +7,9 @@ var collisionShapes = [$CollisionPolygon2D, $CollisionShape2D, $CollisionShape2D
 
 var bullet = preload("res://Bullets/bulletBeige.tscn")
 var counter = 0
+
+func _ready():
+	$AnimatedSprite.visible = false
 		
 func _integrate_forces(state):
 	var velocity = state.get_linear_velocity()
@@ -42,5 +45,19 @@ func _physics_process(delta):
 		var bullet_instance = bullet.instance()
 		bullet_instance.z_index = -1
 		bullet_instance.position = position
-		bullet_instance.set_linear_velocity(400*Vector2(cos(deg2rad(currentAngle+155.7)), sin(deg2rad(currentAngle+155.7))))
+		bullet_instance.set_linear_velocity(700*Vector2(cos(deg2rad(currentAngle+155.7)), sin(deg2rad(currentAngle+155.7))))
 		get_parent().add_child(bullet_instance)
+		
+func destroyTank():
+	$conduit.visible = false
+	$Tank.visible = false
+#	$CollisionShape2D.disabled = true
+#	$CollisionShape2D2.disabled = true
+#	$CollisionShape2D3.disabled = true
+#	$CollisionShape2D4.disabled = true
+#	$CollisionPolygon2D.disabled = true
+	$AnimatedSprite.visible = true
+	$AnimatedSprite.play()
+	
+	
+	

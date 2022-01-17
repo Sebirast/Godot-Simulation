@@ -6,6 +6,9 @@ const WALK_MAX_VELOCITY = 140.0
 
 var bullet = preload("res://Bullets/bulletBeige.tscn")
 
+func _ready():
+	$AnimatedSprite.visible = false
+	
 func _integrate_forces(state):
 	var velocity = state.get_linear_velocity()
 	var step = state.get_step()
@@ -41,8 +44,14 @@ func _physics_process(delta):
 		var bullet_instance = bullet.instance()
 		bullet_instance.z_index = -1
 		bullet_instance.position = position
-		bullet_instance.set_linear_velocity(400*Vector2(cos(deg2rad(180+currentAngle+24.3)), sin(deg2rad(180+currentAngle+24.3))))
+		bullet_instance.set_linear_velocity(700*Vector2(cos(deg2rad(180+currentAngle+24.3)), sin(deg2rad(180+currentAngle+24.3))))
 		get_parent().add_child(bullet_instance)
+		
+func destroyTank():
+	$conduit.visible = false
+	$Tank.visible = false
+	$AnimatedSprite.visible = true
+	$AnimatedSprite.play()
 
 	
 

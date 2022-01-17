@@ -24,6 +24,10 @@ config/name="Code"
 run/main_scene="res://world1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+LifeBar="*res://GUI/LifeBar.gd"
+
 [input]
 
 tank2forward={
