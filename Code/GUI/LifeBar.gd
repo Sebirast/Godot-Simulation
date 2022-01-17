@@ -3,7 +3,6 @@ extends Node2D
 var counter = 0
 
 func subtractHeart():
-
 	if(counter == 0):
 		$HeartEmpty1.visible = true
 		$HeartFull1.visible = not $HeartFull1.visible

@@ -51,13 +51,9 @@ func _physics_process(delta):
 func destroyTank():
 	$conduit.visible = false
 	$Tank.visible = false
-#	$CollisionShape2D.disabled = true
-#	$CollisionShape2D2.disabled = true
-#	$CollisionShape2D3.disabled = true
-#	$CollisionShape2D4.disabled = true
-#	$CollisionPolygon2D.disabled = true
 	$AnimatedSprite.visible = true
 	$AnimatedSprite.play()
-	
-	
-	
+
+
+func _on_AnimatedSprite_animation_finished():
+	queue_free()

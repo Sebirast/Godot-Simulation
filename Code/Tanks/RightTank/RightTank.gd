@@ -53,5 +53,7 @@ func destroyTank():
 	$AnimatedSprite.visible = true
 	$AnimatedSprite.play()
 
-	
+
+func _on_AnimatedSprite_animation_finished():
+	queue_free()
 
