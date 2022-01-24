@@ -58,8 +58,15 @@ func _physics_process(delta):
 		bullet_instance.position = position
 		bullet_instance.set_global_rotation(currentAngle - 90)
 		var angle = currentAngle + 155 + get_rotation_degrees()
-		bullet_instance.set_linear_velocity(700*Vector2(cos(deg2rad(angle)), sin(deg2rad(angle))))
+		bullet_instance.set_linear_velocity(get_parent().shootingSpeed * Vector2(cos(deg2rad(angle)), sin(deg2rad(angle))))
+		
 		get_parent().add_child(bullet_instance)
+		
+		# recoil
+#		var recoil = Vector2(1 * (pow(bullet_instance.get_linear_velocity().x, 2)/ (2 * 60)), 1 * pow(bullet_instance.get_linear_velocity().y,2) / 2 * 60)
+#		add_central_force(recoil)
+#		add_central_force(-recoil)
+#
 		
 func destroyTank():
 	$conduit.visible = false

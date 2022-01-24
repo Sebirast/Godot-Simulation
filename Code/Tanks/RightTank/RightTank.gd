@@ -58,7 +58,7 @@ func _physics_process(delta):
 		bullet_instance.z_index = -1
 		bullet_instance.position = position
 		var angle = currentAngle + 180 + 24.3 + get_rotation_degrees()
-		bullet_instance.set_linear_velocity(700*Vector2(cos(deg2rad(angle)), sin(deg2rad(angle))))
+		bullet_instance.set_linear_velocity(get_parent().shootingSpeed*Vector2(cos(deg2rad(angle)), sin(deg2rad(angle))))
 		get_parent().add_child(bullet_instance)
 
 func destroyTank():

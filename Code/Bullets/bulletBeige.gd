@@ -1,7 +1,5 @@
 extends RigidBody2D
 
-
-#https://godotengine.org/qa/38675/how-can-i-lessen-the-x-velocity-while-in-mid-air
 var collisionCounter = 0
 var oldForce = Vector2(0, 0)
 
@@ -14,7 +12,7 @@ func _on_Bullet_body_entered(body):
 		var lifeBar = get_parent().find_node("LifeBarLeft")
 		lifeBar.subtractHeart()
 		collisionCounter = 1
-		
+
 	elif body.name == "RightTank" and collisionCounter == 0:
 		var lifeBar = get_parent().find_node("LifeBarRight")
 		lifeBar.subtractHeart()
@@ -29,18 +27,15 @@ func _on_AnimatedSprite_animation_finished():
 
 func _physics_process(delta):
 	var velocity = get_linear_velocity()
-	var airResistanceX = -0.809 * 1.155 * (1.2041 / 2) * velocity.x 
-	var airResistanceY = -0.809 * 0.5 * (1.2041 / 2) * velocity.y
+	var airResistanceX = -0.4 * 1.155 * (1.2041 / 2) * velocity.x 
+	var airResistanceY = -0.4 * 1.155 * (1.2041 / 2) * velocity.y
 
 	var airresistance = Vector2(airResistanceX, airResistanceY)
 	print(airresistance)
 
-#	add_central_force(-oldForce)
+	add_central_force(-oldForce)
 	add_central_force(airresistance)
 
 	oldForce = airresistance
 	
 	set_global_rotation(atan2(-velocity.x , velocity.y) +  PI);
-
-
-
