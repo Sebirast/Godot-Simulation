@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://world1.png" type="Texture" id=1]
 [ext_resource path="res://Tanks/LeftTank/LeftTank.tscn" type="PackedScene" id=2]
@@ -6,6 +6,21 @@
 [ext_resource path="res://GUI/LifeBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://world1.gd" type="Script" id=5]
 [ext_resource path="res://GUI/text_gameover.png" type="Texture" id=6]
+[ext_resource path="res://GUI/Button.gd" type="Script" id=7]
+[ext_resource path="res://GUI/Themes/button.tres" type="Theme" id=8]
+[ext_resource path="res://GUI/click3.wav" type="AudioStream" id=9]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.352941, 0.584314, 0.831373, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="World" type="Node2D"]
 position = Vector2( 0, -13 )
@@ -24,11 +39,11 @@ scale = Vector2( 2.058, 3.07 )
 polygon = PoolVector2Array( -16.5, -1, -6.5, 3, -6.5, 4.2, 25.5, 26.5, 27.5, 26.5, 31.5, 29.5, 39.4, 29.5, 44.5, 32.1, 44.5, 33.3, 60.5, 45.5, 62.3, 45.5, 75.4, 51.5, 81.2, 51.5, 88.1, 53.5, 115.5, 53.5, 115.5, 54.8, 118.4, 55.5, 157.5, 55.5, 157.5, 56.6, 169.5, 57.6, 169.5, 59.1, 170.3, 59.5, 194.9, 59.5, 226.9, 56.5, 228.1, 56.5, 248.5, 58.6, 248.5, 97.5, 195, 97.5, -247.5, 98.5, -248.542, 66.7752, -229.106, 67.4267, -208.698, 68.0782, -205.296, 67.4267, -202.867, 67.7524, -172.255, 67.4267, -157.191, 61.8893, -153.304, 61.2378, -145.53, 60.5863, -135.9, 62.5, -121.5, 64.3, -105.5, 55.1, -105.5, 53.6, -94.8, 36.5, -91.1079, 34.5277, -84.6, 29.5, -82.3615, 28.9902, -72.1574, 22.8013, -71.5, 22.3, -55.6, 7.5, -53.7, 7.5, -49.6, 3.5, -47.3, 3.5, -38.5, -0.900002, -38.5, -2.5, -16.5, -2.5 )
 
 [node name="LeftTank" parent="." instance=ExtResource( 2 )]
-position = Vector2( 732, 435 )
+position = Vector2( 100, 485 )
 mode = 0
 
 [node name="RightTank" parent="." instance=ExtResource( 3 )]
-position = Vector2( 881, 452 )
+position = Vector2( 822, 445 )
 mode = 0
 
 [node name="LifeBarLeft" parent="." instance=ExtResource( 4 )]
@@ -41,3 +56,23 @@ position = Vector2( 850, 50 )
 position = Vector2( 514, 292 )
 scale = Vector2( 1.41977, 1.77778 )
 texture = ExtResource( 6 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 344.0
+margin_top = 417.0
+margin_right = 678.0
+margin_bottom = 512.0
+rect_scale = Vector2( 0.992701, 1.10085 )
+theme = ExtResource( 8 )
+custom_styles/hover = SubResource( 2 )
+text = "Restart"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickReset" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = 24.0
+
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

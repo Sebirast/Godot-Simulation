@@ -22,6 +22,7 @@ animations = [ {
 
 [node name="Bullet" type="RigidBody2D"]
 mode = 2
+mass = 6687.24
 physics_material_override = SubResource( 2 )
 contacts_reported = 1
 contact_monitor = true
@@ -38,6 +39,7 @@ scale = Vector2( 0.28125, 0.303309 )
 polygon = PoolVector2Array( 4, -16, 6, -16, 6, -15, 7, -15, 7, -14, 8, -14, 8, -13, 9, -13, 9, -11, 10, -11, 10, 16, 9, 16, 9, 17, -9, 17, -9, 16, -10, 16, -10, -11, -9, -11, -9, -13, -8, -13, -8, -14, -7, -14, -7, -15, -6, -15, -6, -16, -5, -16, -5, -17, 4, -17 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
 scale = Vector2( 0.756098, 0.752747 )
 frames = SubResource( 1 )
 offset = Vector2( 2.96774, 0.854019 )

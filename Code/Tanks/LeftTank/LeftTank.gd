@@ -8,6 +8,9 @@ var collisionShapes = [$CollisionPolygon2D, $CollisionShape2D, $CollisionShape2D
 var bullet = preload("res://Bullets/bulletBeige.tscn")
 var counter = 0
 
+var minAngle = -150
+var maxAngle = -240
+
 func _ready():
 	$AnimatedSprite.visible = false
 		
@@ -36,16 +39,26 @@ func _integrate_forces(state):
 
 func _physics_process(delta):
 	var currentAngle = $conduit.get_rotation_degrees()
+	
 	if Input.is_action_pressed("LeftConduitDown") and not Input.is_action_pressed("LeftConduitUp"):
-		$conduit.set_rotation_degrees(currentAngle + 1)
+		currentAngle += 1
 	elif Input.is_action_pressed("LeftConduitUp") and not Input.is_action_pressed("LeftConduitDown"):
-		$conduit.set_rotation_degrees(currentAngle - 1)
+		currentAngle -= 1
+		
+	if currentAngle <= maxAngle:
+		currentAngle = maxAngle
+	elif currentAngle >= minAngle:
+		currentAngle = minAngle
+
+	$conduit.set_rotation_degrees(currentAngle)
 	
 	if Input.is_action_just_pressed("LeftShoot"):
 		var bullet_instance = bullet.instance()
 		bullet_instance.z_index = -1
 		bullet_instance.position = position
-		bullet_instance.set_linear_velocity(700*Vector2(cos(deg2rad(currentAngle+155.7)), sin(deg2rad(currentAngle+155.7))))
+		bullet_instance.set_global_rotation(currentAngle - 90)
+		var angle = currentAngle + 155 + get_rotation_degrees()
+		bullet_instance.set_linear_velocity(200*Vector2(cos(deg2rad(angle)), sin(deg2rad(angle))))
 		get_parent().add_child(bullet_instance)
 		
 func destroyTank():
@@ -53,7 +66,6 @@ func destroyTank():
 	$Tank.visible = false
 	$AnimatedSprite.visible = true
 	$AnimatedSprite.play()
-
 
 func _on_AnimatedSprite_animation_finished():
 	queue_free()

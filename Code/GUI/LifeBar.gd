@@ -15,13 +15,13 @@ func subtractHeart():
 		$HeartEmpty3.visible = true
 		$HeartFull3.visible = not $HeartFull3.visible
 		get_parent().find_node("TextGameover").visible = true
+		get_parent().find_node("Button").visible = true
 		if(name == "LifeBarLeft"):
 			get_parent().find_node("LeftTank").destroyTank()
 		
 		elif(name == "LifeBarRight"):
 			get_parent().find_node("RightTank").destroyTank()
 			
-	
 	counter += 1
 
 func _process(delta):

@@ -32,11 +32,11 @@ angular_damp = 18.791
 script = ExtResource( 2 )
 
 [node name="conduit" type="Sprite" parent="."]
-position = Vector2( -6, -10 )
+position = Vector2( -2.99948, -9.5355 )
 rotation = -0.424115
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
-offset = Vector2( -99.0431, -48.0715 )
+offset = Vector2( -111.761, -56.362 )
 
 [node name="Tank" type="Sprite" parent="."]
 position = Vector2( -8, 16 )
@@ -65,6 +65,7 @@ scale = Vector2( 0.2, 0.2 )
 shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 11, 3 )
 scale = Vector2( 1.65854, 0.846154 )
 frames = SubResource( 4 )

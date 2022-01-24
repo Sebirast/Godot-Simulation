@@ -40,8 +40,10 @@ texture = ExtResource( 3 )
 offset = Vector2( -98, -51 )
 
 [node name="Tank" type="Sprite" parent="."]
+position = Vector2( 1.69119, -8.68967 )
 scale = Vector2( -0.2, 0.2 )
 texture = ExtResource( 1 )
+offset = Vector2( 8.45594, 43.4484 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2, 15 )
@@ -69,6 +71,7 @@ scale = Vector2( 0.2, 0.2 )
 shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 6, -1 )
 scale = Vector2( 1.76829, 1.08242 )
 frames = SubResource( 4 )
