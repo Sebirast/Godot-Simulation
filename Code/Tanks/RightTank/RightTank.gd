@@ -58,10 +58,8 @@ func _physics_process(delta):
 		bullet_instance.z_index = -1
 		bullet_instance.position = position
 		var angle = currentAngle + 180 + 24.3 + get_rotation_degrees()
-		bullet_instance.set_linear_velocity(400*Vector2(cos(deg2rad(angle)), sin(deg2rad(angle))))
+		bullet_instance.set_linear_velocity(700*Vector2(cos(deg2rad(angle)), sin(deg2rad(angle))))
 		get_parent().add_child(bullet_instance)
-		bullet_instance.rotation_degrees = 0
-		print(bullet_instance.rotation)
 
 func destroyTank():
 	$conduit.visible = false

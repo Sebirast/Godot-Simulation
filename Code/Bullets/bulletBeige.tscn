@@ -22,7 +22,6 @@ animations = [ {
 
 [node name="Bullet" type="RigidBody2D"]
 mode = 2
-mass = 6687.24
 physics_material_override = SubResource( 2 )
 contacts_reported = 1
 contact_monitor = true
