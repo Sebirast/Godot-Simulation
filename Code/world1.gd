@@ -5,3 +5,7 @@ func _ready():
 
 func reload():
 	get_tree().reload_current_scene()
+
+
+func _on_Button2_pressed():
+	pass # Replace with function body.

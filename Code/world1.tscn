@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://world1.png" type="Texture" id=1]
 [ext_resource path="res://Tanks/LeftTank/LeftTank.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://GUI/Button.gd" type="Script" id=7]
 [ext_resource path="res://GUI/Themes/button.tres" type="Theme" id=8]
 [ext_resource path="res://GUI/click3.wav" type="AudioStream" id=9]
+[ext_resource path="res://Button2.gd" type="Script" id=10]
+[ext_resource path="res://Map/colored_desert.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.352941, 0.584314, 0.831373, 1 )
@@ -22,9 +24,36 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 15.5, 306.5 )
+
 [node name="World" type="Node2D"]
 position = Vector2( 0, -13 )
 script = ExtResource( 5 )
+
+[node name="ColoredDesert4" type="Sprite" parent="."]
+position = Vector2( 527, 257 )
+scale = Vector2( 1.1167, 0.570312 )
+z_index = -2
+texture = ExtResource( 11 )
+
+[node name="ColoredDesert" type="Sprite" parent="."]
+position = Vector2( 186, 406 )
+scale = Vector2( 0.362305, 0.408203 )
+z_index = -2
+texture = ExtResource( 11 )
+
+[node name="ColoredDesert2" type="Sprite" parent="."]
+position = Vector2( 550, 389 )
+scale = Vector2( 0.362305, 0.408203 )
+z_index = -2
+texture = ExtResource( 11 )
+
+[node name="ColoredDesert3" type="Sprite" parent="."]
+position = Vector2( 899, 394 )
+scale = Vector2( 0.362305, 0.408203 )
+z_index = -2
+texture = ExtResource( 11 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -41,10 +70,12 @@ polygon = PoolVector2Array( -16.5, -1, -6.5, 3, -6.5, 4.2, 25.5, 26.5, 27.5, 26.
 [node name="LeftTank" parent="." instance=ExtResource( 2 )]
 position = Vector2( 100, 485 )
 mode = 0
+mass = 6687.24
 
 [node name="RightTank" parent="." instance=ExtResource( 3 )]
 position = Vector2( 822, 445 )
 mode = 0
+mass = 6687.24
 
 [node name="LifeBarLeft" parent="." instance=ExtResource( 4 )]
 position = Vector2( 50, 50 )
@@ -71,8 +102,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button2" type="Button" parent="."]
+margin_left = 414.0
+margin_top = 554.0
+margin_right = 608.0
+margin_bottom = 584.0
+rect_scale = Vector2( 0.992701, 1.10085 )
+theme = ExtResource( 8 )
+custom_styles/hover = SubResource( 2 )
+text = "Reload scene"
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ClickReset" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
 volume_db = 24.0
 
+[node name="worldBorder" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="worldBorder"]
+position = Vector2( -15, 311 )
+shape = SubResource( 3 )
+
+[node name="worldBorder2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="worldBorder2"]
+position = Vector2( 1038.5, 308 )
+shape = SubResource( 3 )
+
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="Button2" method="_on_Button2_pressed"]
